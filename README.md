@@ -1,27 +1,46 @@
-# Skills
+# edr — Claude Code skills
 
-A collection of Claude Code skills. Install any skill using the [skills CLI](https://skills.sh):
+My Claude Code skills, packaged as one plugin. Every skill is namespaced under `edr:`, so `babysit-pr` is invoked as `/edr:babysit-pr`.
+
+## Install
+
+In Claude Code (2.1.275 or later):
 
 ```
-npx skills add ederchrono/skills -s <skill-name>
+/plugin install edr --marketplace ederchrono/skills
 ```
 
-## Table of Contents
+From a shell:
 
-- [preflight](#preflight)
-
----
-
-## preflight
-
-A pre-execution check that runs before writing any code. It surfaces edge cases, user roles, and lifecycle states upfront — so implementation is grounded in what actually needs to be true.
-
-Covers three work types:
-- **Bug** — reproduction steps, root cause hypothesis, edge cases, tests first
-- **Feature** — state/role matrix, permutations, tests first
-- **Exploration** — goal-driven investigation, findings structured around the decision
-
-**Install:**
 ```
-npx skills add ederchrono/skills -s preflight
+claude plugin install edr --marketplace ederchrono/skills
+```
+
+On older versions, add the marketplace first:
+
+```
+/plugin marketplace add ederchrono/skills
+/plugin install edr@edr
+```
+
+## Updates
+
+The plugin has no pinned version, so every commit pushed to `main` is a new version.
+
+- **Auto-update (recommended):** run `/plugin`, open the **Marketplaces** tab, select `edr`, and choose **Enable auto-update**. Claude Code then pulls new commits in the background. Auto-update is off by default for third-party marketplaces.
+- **Manual:** `claude plugin marketplace update edr && claude plugin update edr@edr`
+
+## Skills
+
+None yet.
+
+## Adding a skill
+
+Create `skills/<name>/SKILL.md`. The directory name becomes the skill name, so `skills/foo/` turns into `/edr:foo`. Don't put `edr` in the name, because the plugin adds the prefix. Refer to files bundled with the skill as `${CLAUDE_SKILL_DIR}/…` in `SKILL.md`, never by an absolute path.
+
+Test it locally before pushing:
+
+```
+claude --plugin-dir .
+claude plugin validate .
 ```

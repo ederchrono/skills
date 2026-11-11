@@ -1,0 +1,10 @@
+{
+  "name": "edr",
+  "description": "Eder's Claude Code skills. Invoke them as /edr:<skill>.",
+  "author": {
+    "name": "Eder Díaz",
+    "url": "https://github.com/ederchrono"
+  },
+  "repository": "https://github.com/ederchrono/skills",
+  "license": "MIT"
+}

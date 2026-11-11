@@ -1,0 +1,16 @@
+{
+  "name": "edr",
+  "owner": {
+    "name": "Eder Díaz",
+    "url": "https://github.com/ederchrono"
+  },
+  "description": "Eder's Claude Code skills, installable as one plugin. Skills are invoked as /edr:<skill>.",
+  "plugins": [
+    {
+      "name": "edr",
+      "source": "./",
+      "description": "Eder's Claude Code skills.",
+      "category": "engineering"
+    }
+  ]
+}
