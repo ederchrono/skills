@@ -1,22 +1,23 @@
 ---
 name: tidy
-description: Tidy this branch's changes for readability and concision, moving business-rule comments into CONTEXT.md.
+description: Tidy this branch's changes and the code around them for readability and concision, moving business-rule comments into CONTEXT.md.
 disable-model-invocation: true
 argument-hint: "[base-ref]"
 ---
 
-Tidy the code this branch changed so it reads clearly in fewer lines, with identical behavior. Readability and concision outrank cleverness and the author's original structure.
+Tidy the code this branch changed so it reads clearly in fewer lines, with identical behavior, and follow the scout rule: leave the code around it cleaner than you found it. Readability and concision outrank cleverness and the author's original structure.
 
 ## 1. Scope
 
 - **Base:** `$ARGUMENTS` if given; otherwise the merge-base with the default branch (`git merge-base HEAD origin/HEAD`; when `origin/HEAD` is unset, use `origin/main` or `origin/master`).
-- **Scope:** `git diff <base>` (committed and uncommitted) plus untracked files. Code outside it stays as it is, unless a caller or definition must change to stay consistent with a tidy.
+- **Changed code:** `git diff <base>` (committed and uncommitted) plus untracked files.
+- **Scout area:** code the changed code sits in or touches: the rest of each changed function or component, and the functions, types and call sites one hop away from it. Code further out stays as it is.
 
-Done when you have read every changed hunk in its surrounding code.
+Done when you have read every changed hunk and its scout area.
 
 ## 2. Tidy
 
-Check every changed hunk for:
+Check every changed hunk and its scout area for:
 
 - **Comments a name could replace.** Rename, or extract a well-named function or constant, then delete the comment.
 - **Redundant comments:** ones that restate the code, narrate history ("changed X to Y", ticket notes), or label obvious sections. Delete them.
@@ -28,7 +29,9 @@ A comment stays only when it states a business rule or external constraint the c
 
 Every tidy preserves behavior: same API, outputs, errors and side effects. List a change that would alter behavior as a proposal in the report instead of making it.
 
-Done when every changed hunk has been checked against every item above.
+Scout-area tidies stay small and local: each one should read as an obvious improvement to a reviewer of this branch. A larger refactor there goes in the report as a proposal.
+
+Done when every changed hunk and its scout area have been checked against every item above.
 
 ## 3. CONTEXT.md
 
@@ -44,7 +47,7 @@ Done when they pass, or when you can name the checks that could not run and why.
 
 Leave the changes uncommitted for review, and report:
 
-- Per file, what changed, in a line or two.
-- Proposed behavior changes, if any.
+- Per file, what changed, in a line or two, with scout-area tidies marked as such.
+- Proposals: behavior changes and larger scout-area refactors, if any.
 - `CONTEXT.md` entries added or extended.
 - Check results.
