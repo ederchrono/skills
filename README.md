@@ -32,7 +32,10 @@ The plugin has no pinned version, so every commit pushed to `main` is a new vers
 
 ## Skills
 
-None yet.
+| Skill | What it does |
+| --- | --- |
+| [`/edr:show-me`](skills/show-me/SKILL.md) | Explains the current topic visually: pseudocode, call trees, component and file trees, Mermaid, diffs, or a focused HTML page when a diagram isn't enough. |
+| [`/edr:new-session [name]`](skills/new-session/SKILL.md) | Starts one unit of parallel work: a detached tmux session, a rift worktree on `<github-login>/<feat\|fix\|chore>/<name>`, and a Claude session, all sharing one name. Needs `tmux`, `rift` and a signed-in `gh`. Only runs when you invoke it. |
 
 ## Adding a skill
 
