@@ -28,6 +28,16 @@ On older versions, add the marketplace first:
 The plugin has no pinned version, so every commit pushed to `main` is a new version.
 
 - **Auto-update (recommended):** run `/plugin`, open the **Marketplaces** tab, select `edr`, and choose **Enable auto-update**. Claude Code then pulls new commits in the background. Auto-update is off by default for third-party marketplaces.
+- **Auto-update via settings:** add `"autoUpdate": true` next to `source` in the `edr` entry under `extraKnownMarketplaces` in `~/.claude/settings.json`. The install command adds that entry for you.
+
+  ```json
+  "extraKnownMarketplaces": {
+    "edr": {
+      "source": { "source": "github", "repo": "ederchrono/skills" },
+      "autoUpdate": true
+    }
+  }
+  ```
 - **Manual:** `claude plugin marketplace update edr && claude plugin update edr@edr`
 
 ## Skills
