@@ -46,6 +46,7 @@ The plugin has no pinned version, so every commit pushed to `main` is a new vers
 | --- | --- |
 | [`/edr:show-me`](skills/show-me/SKILL.md) | Explains the current topic visually: pseudocode, call trees, component and file trees, Mermaid, diffs, or a focused HTML page when a diagram isn't enough. |
 | [`/edr:tidy [base-ref]`](skills/tidy/SKILL.md) | Tidies the current branch's changes, and by the scout rule the code right around them, for readability and concision, with the same behavior. It deletes redundant comments, prefers names over comments, and moves business rules into `CONTEXT.md`. Then it runs your checks and leaves the result uncommitted. Only runs when you invoke it. |
+| [`/edr:babysit-pr [PR]`](skills/babysit-pr/SKILL.md) | Picks up the review feedback that [`/autofix-pr`](https://code.claude.com/docs/en/claude-code-on-the-web) can't handle alone: ambiguous asks, big changes and deferred follow-ups. You decide ambiguous items from concrete options and approve plans for big changes; it implements, verifies, pushes and replies on each thread. Out-of-scope work becomes a Jira ticket once you confirm it and pick the board. Needs `gh` and `jq`. Only runs when you invoke it. |
 | [`/edr:new-session [name]`](skills/new-session/SKILL.md) | Starts one unit of parallel work: a detached tmux session, a rift worktree on `<github-login>/<feat\|fix\|chore>/<name>`, and a Claude session, all sharing one name. Needs `tmux`, `rift` and a signed-in `gh`. Only runs when you invoke it. |
 
 ## Adding a skill
